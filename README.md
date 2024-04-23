@@ -7,4 +7,4 @@ Pel moment només n'hi haurà la lógica del joc i més endavant s'anirà afegin
 
 
 
-Autors: Yang Chen, Nour Khobbi.
+Autors: Yang Chen, Nour Kobbi.
