@@ -31,9 +31,7 @@ typedef enum
 
 typedef enum
 {
-	GIR_H = 0,
-	GIR_AH,
-	MOURE_DRETA,
+	MOURE_DRETA = 0,
 	MOURE_ESQUERRA
 
 } Moviment; //per determinar el moviment fet per la figura

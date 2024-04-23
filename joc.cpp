@@ -3,7 +3,7 @@
 
 bool Joc::giraFigura(DireccioGir direccio)
 {
-	m_figura.gir(direccio);
+	if (m_tauler.girValid(m_figura, direccio))
 }
 
 bool Joc::mouFigura(Moviment dirX)
