@@ -1,6 +1,10 @@
 #ifndef DEFINICIONS_H
 #define DEFINICIONS_H
 
+#include <fstream>
+#include <string>
+
+
 const int N_FILES = 8;
 const int N_COLUMNES = 8;
 typedef enum

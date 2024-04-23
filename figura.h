@@ -17,7 +17,7 @@ public:
 	void getMatriu(ColorFigura matriu[4][4]) const;
 	void caure(); //métode per fer caure la figura
 	void gir(DireccioGir dirGir); //métode per girar la figura
-	void moure(Moviment moviment); //método per desplaçar la figura
+	void moure(Moviment moviment); //métode per desplaçar la figura
 
 private:
 

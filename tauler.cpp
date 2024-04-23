@@ -21,8 +21,8 @@ bool comprovarTauler(const ColorFigura tauler[N_FILES][N_COLUMNES], const Figura
 
 	while (bucle && i < 4)
 	{
-		int x = figura.getPosicioX() + i - 1;
-		int y = figura.getPosicioY() + j - 1;
+		int x = figura.getPosicioX() + j - 1;
+		int y = figura.getPosicioY() + i - 1;
 		if (matriu[i][j] != NO_COLOR && x > N_FILES || matriu[i][j] != NO_COLOR && y < 0 || matriu[i][j] != NO_COLOR && y > N_COLUMNES)
 		{
 			trobat = true;
@@ -129,6 +129,34 @@ void Tauler::eliminarFiles(int matriuIndex[], int mida)
 		for (int j = 0; j < N_COLUMNES; j++)
 		{
 			m_tauler[matriuIndex[i]][j] = NO_COLOR;
+		}
+	}
+}
+
+void Tauler::colocarFigura(const Figura& figura)
+{
+	ColorFigura matriu[4][4];
+	figura.getMatriu(matriu);
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			int x = figura.getPosicioX() + j - 1;
+			int y = figura.getPosicioY() + i - 1;
+
+			m_tauler[x][y] = matriu[i][j];
+		}
+	}
+}
+
+void Tauler::getTauler(ColorFigura matriu[N_FILES][N_COLUMNES]) const
+{
+	for (int i = 0; i < N_FILES; i++)
+	{
+		for (int j = 0; j < N_COLUMNES; j++)
+		{
+			matriu[i][j] = m_tauler[i][j];
 		}
 	}
 }

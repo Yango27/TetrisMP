@@ -13,6 +13,8 @@ public:
 	bool potCaure(const Figura& figura) const; //comprova si la figura pot seguir caient
 	void comprovarFiles(int matriuIndex[],int &mida) const; // comprova si hi ha una o mes files plenes, si es que si retornara per referencia el nFiles a esborrar i la fila per on començar
 	void eliminarFiles(int matriuIndex[], int mida); //elimina les files segons l'anterior métode
+	void colocarFigura(const Figura& figura);
+	void getTauler(ColorFigura matriu[N_FILES][N_COLUMNES]) const;
 
 private:
 	ColorFigura m_tauler[N_FILES][N_COLUMNES];
