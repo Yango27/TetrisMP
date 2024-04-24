@@ -26,97 +26,6 @@ void Figura::getMatriu(ColorFigura matriu[4][4]) const
 	}
 }
 
-void Figura::inicialitza(TipusFigura tipusFigura, int x, int y, ColorFigura color)
-{
-	m_tipusFigura = tipusFigura;
-	m_colorFigura = color;
-	m_posicioX = x;
-	m_posicioY = y;
-
-	switch (tipusFigura)
-	{
-		case TipusFigura::FIGURA_I:
-
-			for (int i = 0; i < 4; i++)
-			{
-				m_matriu[1][i] = color;
-			}
-			break;
-
-		case TipusFigura::FIGURA_J:
-
-			for (int i = 0; i < 3; i++)
-			{
-				m_matriu[1][i] = color;
-			}
-			m_matriu[0][0] = color;
-			break;
-
-		case TipusFigura::FIGURA_L:
-			for (int i = 0; i < 3; i++)
-			{
-				m_matriu[1][i] = color;
-			}
-			m_matriu[0][2] = color;
-			break;
-
-		case TipusFigura::FIGURA_T:
-
-			for (int i = 0; i < 3; i++)
-			{
-				m_matriu[1][i] = color;
-			}
-			m_matriu[0][1] = color;
-			break;
-
-		case TipusFigura::FIGURA_S:
-
-			for (int i = 0; i < 2; i++)
-			{
-				for (int j = 0; j < 2; j++)
-				{
-					if (i == 0)
-					{
-						m_matriu[i][j + 1] = color;
-					}
-					else
-					{
-						m_matriu[i][j] = color;
-					}
-				}
-			}
-			break;
-
-		case TipusFigura::FIGURA_Z:
-
-			for (int i = 0; i < 2; i++)
-			{
-				for (int j = 0; j < 2; j++)
-				{
-					if (i == 1)
-					{
-						m_matriu[i][j + 1] = color;
-					}
-					else
-					{
-						m_matriu[i][j] = color;
-					}
-				}
-			}
-			break;
-
-		case TipusFigura::FIGURA_O:
-
-			for (int i = 0; i < 2; i++)
-			{
-				for (int j = 0; j < 2; j++)
-				{
-					m_matriu[i][j] = color;
-				}
-			}
-			break;
-	}
-}
 
 void Figura::caure()
 {
@@ -192,4 +101,124 @@ void Figura::moure(Moviment moviment)
 	{
 		m_posicioX -= 1;
 	}
+}
+
+void Figura::inicialitza(int tipus, int x, int y)
+{
+	TipusFigura tipusFigura;
+
+	switch (tipus)
+	{
+	case 1:
+
+		tipusFigura = FIGURA_O;
+		break;
+	case 2:
+		tipusFigura = FIGURA_I;
+		break;
+	case 3:
+		tipusFigura = FIGURA_T;
+		break;
+	case 4:
+		tipusFigura = FIGURA_L;
+		break;
+	case 5:
+		tipusFigura = FIGURA_J;
+		break;
+	case 6:
+		tipusFigura = FIGURA_Z;
+		break;
+	case 7:
+		tipusFigura = FIGURA_S;
+		break;
+	}
+
+	m_tipusFigura = tipusFigura;
+	m_posicioX = x;
+	m_posicioY = y;
+
+	switch (tipusFigura)
+	{
+	case TipusFigura::FIGURA_I:
+
+		for (int i = 0; i < 4; i++)
+		{
+			m_matriu[1][i] = COLOR_BLAUCEL;
+		}
+		break;
+
+	case TipusFigura::FIGURA_J:
+
+		for (int i = 0; i < 3; i++)
+		{
+			m_matriu[1][i] = COLOR_BLAUFOSC;
+		}
+		m_matriu[0][0] = COLOR_BLAUFOSC;
+		break;
+
+	case TipusFigura::FIGURA_L:
+		for (int i = 0; i < 3; i++)
+		{
+			m_matriu[1][i] = COLOR_TARONJA;
+		}
+		m_matriu[0][2] = COLOR_TARONJA;
+		break;
+
+	case TipusFigura::FIGURA_T:
+
+		for (int i = 0; i < 3; i++)
+		{
+			m_matriu[1][i] = COLOR_MAGENTA;
+		}
+		m_matriu[0][1] = COLOR_MAGENTA;
+		break;
+
+	case TipusFigura::FIGURA_S:
+
+		for (int i = 0; i < 2; i++)
+		{
+			for (int j = 0; j < 2; j++)
+			{
+				if (i == 0)
+				{
+					m_matriu[i][j + 1] = COLOR_VERD;
+				}
+				else
+				{
+					m_matriu[i][j] = COLOR_VERD;
+				}
+			}
+		}
+		break;
+
+	case TipusFigura::FIGURA_Z:
+
+		for (int i = 0; i < 2; i++)
+		{
+			for (int j = 0; j < 2; j++)
+			{
+				if (i == 1)
+				{
+					m_matriu[i][j + 1] = COLOR_VERMELL;
+				}
+				else
+				{
+					m_matriu[i][j] = COLOR_VERMELL;
+				}
+			}
+		}
+		break;
+
+	case TipusFigura::FIGURA_O:
+
+		for (int i = 0; i < 2; i++)
+		{
+			for (int j = 0; j < 2; j++)
+			{
+				m_matriu[i][j] = COLOR_GROC;
+			}
+		}
+		break;
+	}
+
 }

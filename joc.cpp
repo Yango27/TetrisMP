@@ -78,13 +78,12 @@ void Joc::inicialitza(const string& nomFitxer)
 		int tipus, fila, columna, codiGir, codiColor;
 		fitxer >> tipus >> fila >> columna >> codiGir;
 		int i = 0, j = 0;
-		ColorFigura matriu[N_FILES][N_COLUMNES], color;
+		int matriu[N_FILES][N_COLUMNES];
 
 		fitxer >> codiColor;
-		//falta conversió de codiColor (int) a color (ColorFigura)
 		while (!fitxer.eof() && i < N_FILES)
 		{
-			matriu[i][j] = color;
+			matriu[i][j] = codiColor;
 			if (j < N_COLUMNES)
 			{
 				j++;
@@ -97,6 +96,20 @@ void Joc::inicialitza(const string& nomFitxer)
 			fitxer >> codiColor;
 		}
 		fitxer.close();
+		m_tauler.inicialitzar(matriu);
+		m_figura.inicialitza(tipus, fila, columna);
+
+		if (codiGir == 3)
+		{
+			m_figura.gir(GIR_ANTI_HORARI);
+		}
+		else 
+		{
+			for (int i = 0; i < codiGir; i++)
+			{
+				m_figura.gir(GIR_HORARI);
+			}
+		}
 	}
 
 }

@@ -161,7 +161,39 @@ void Tauler::getTauler(ColorFigura matriu[N_FILES][N_COLUMNES]) const
 	}
 }
 
-void Tauler::inicialitzar(const string& nomFitxer)
+void Tauler::inicialitzar(int matriu[N_FILES][N_COLUMNES])
 {
-
+	for (int i = 0; i < N_FILES; i++)
+	{
+		for (int j = 0; j < N_COLUMNES; j++)
+		{
+			switch (matriu[i][j])
+			{
+			case 0:
+				m_tauler[i][j] = NO_COLOR;
+				break;
+			case 1:
+				m_tauler[i][j] = COLOR_GROC;
+				break;
+			case 2:
+				m_tauler[i][j] = COLOR_BLAUCEL;
+				break;
+			case 3:
+				m_tauler[i][j] = COLOR_MAGENTA;
+				break;
+			case 4:
+				m_tauler[i][j] = COLOR_TARONJA;
+				break;
+			case 5:
+				m_tauler[i][j] = COLOR_BLAUFOSC;
+				break;
+			case 6:
+				m_tauler[i][j] = COLOR_VERMELL;
+				break;
+			case 7:
+				m_tauler[i][j] = COLOR_VERD;
+				break;
+			}
+		}
+	}
 }

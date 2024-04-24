@@ -9,7 +9,7 @@ class Figura
 public:
 
 	Figura(); //inicialitzara tot a noColor, noFigura i posicio 0
-	void inicialitza(TipusFigura tipusFigura, int x, int y, ColorFigura color); //inicialitza donat un tipus de figura, posicio i color.
+	void inicialitza(int tipus, int x, int y); //inicialitza donat un tipus de figura, posicio i color.
 	int getPosicioX() const{ return m_posicioX; };
 	int getPosicioY() const{ return m_posicioY; };
 	TipusFigura getFigura() const{ return m_tipusFigura; };

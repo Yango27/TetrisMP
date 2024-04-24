@@ -7,7 +7,7 @@ class Tauler
 public:
 
 	Tauler(); //inicialitza el tabler amb noColor
-	void inicialitzar(const string& nomFitxer); //per poder inicialitzar segons el fitxer
+	void inicialitzar(int matriu[N_FILES][N_COLUMNES]); //per poder inicialitzar segons el fitxer
 	bool movimentValid(const Figura& figura, Moviment moviment) const;
 	bool girValid(const Figura& figura, DireccioGir gir) const; //comprova si un moviment es valid, donat una figura i el moviment (si cau o si gira)
 	bool potCaure(const Figura& figura) const; //comprova si la figura pot seguir caient
