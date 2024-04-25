@@ -8,7 +8,7 @@ public:
 
 	void inicialitza(const string& nomFitxer);
 	bool giraFigura(DireccioGir direccio);
-	bool mouFigura(Moviment dirX);
+	bool mouFigura(int dirX);
 	int baixaFigura();
 	void escriuTauler(const string& nomFitxer);
 

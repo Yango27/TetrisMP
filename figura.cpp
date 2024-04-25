@@ -29,7 +29,7 @@ void Figura::getMatriu(ColorFigura matriu[4][4]) const
 
 void Figura::caure()
 {
-	m_posicioX++;
+	m_posicioY++;
 }
 
 void Figura::gir(DireccioGir dirGir)
@@ -46,7 +46,7 @@ void Figura::gir(DireccioGir dirGir)
 					matriu[i][j] = m_matriu[j][i];
 				}
 			}
-			for (int i = 0; i < 3; i++) 
+			for (int i = 0; i < 3; i++)
 			{
 				for (int j = 0; j < 3; j++)
 				{
@@ -61,7 +61,7 @@ void Figura::gir(DireccioGir dirGir)
 					m_matriu[i][2] = matriu[i][0];
 				}
 			}
-			
+
 		}
 		else
 		{
@@ -134,8 +134,8 @@ void Figura::inicialitza(int tipus, int x, int y)
 	}
 
 	m_tipusFigura = tipusFigura;
-	m_posicioX = x;
-	m_posicioY = y;
+	m_posicioX = y;
+	m_posicioY = x;
 
 	switch (tipusFigura)
 	{
