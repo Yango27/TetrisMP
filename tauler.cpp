@@ -23,12 +23,12 @@ bool comprovarTauler(const ColorFigura tauler[N_FILES][N_COLUMNES], const Figura
 	{
 		int x = figura.getPosicioX() + j - 1;
 		int y = figura.getPosicioY() + i - 1;
-		if (matriu[i][j] != NO_COLOR && x > N_FILES || matriu[i][j] != NO_COLOR && y < 0 || matriu[i][j] != NO_COLOR && y > N_COLUMNES)
+		if (matriu[i][j] != NO_COLOR && y > N_FILES || matriu[i][j] != NO_COLOR && x < 0 || matriu[i][j] != NO_COLOR && x > N_COLUMNES)
 		{
 			trobat = true;
 			bucle = false;
 		}
-		if (x < 0 || x > N_FILES || y < 0 || y > N_COLUMNES)
+		if (y < 0 || y > N_FILES || x < 0 || x > N_COLUMNES)
 		{
 
 		}
@@ -38,7 +38,7 @@ bool comprovarTauler(const ColorFigura tauler[N_FILES][N_COLUMNES], const Figura
 			bucle = false;
 		}
 
-		if (j < 4)
+		if (j < 3)
 		{
 			j++;
 		}
@@ -48,7 +48,7 @@ bool comprovarTauler(const ColorFigura tauler[N_FILES][N_COLUMNES], const Figura
 			i++;
 		}
 	}
-	return trobat;
+	return !trobat;
 }
 
 bool Tauler::movimentValid(const Figura& figura, Moviment moviment) const
@@ -153,7 +153,7 @@ void Tauler::eliminaFigura(const Figura& figura)
 	}
 }
 
-void Tauler::colocarFigura(const Figura& figura)
+void Tauler::colocarFigura(const Figura& figura && matriu[i][j] != NO_COLOR)
 {
 	ColorFigura matriu[4][4];
 	figura.getMatriu(matriu);

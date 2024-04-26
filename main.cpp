@@ -2,7 +2,8 @@
 
 int main()
 {
-	Tauler tauler;
+	Joc joc;
+	joc.inicialitza()
 
 }
 	
