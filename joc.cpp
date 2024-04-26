@@ -8,11 +8,9 @@ bool Joc::giraFigura(DireccioGir direccio)
 	if (m_tauler.girValid(m_figura, direccio))
 	{
 		valid = true;
-		m_tauler.eliminaFigura(m_figura);
 		m_figura.gir(direccio);
-		m_tauler.colocarFigura(m_figura);
 	}
-
+	m_tauler.colocarFigura(m_figura);
 	return valid;
 }
 
@@ -32,17 +30,17 @@ bool Joc::mouFigura(int dirX)
 	if (m_tauler.movimentValid(m_figura, direccio))
 	{
 		valid = true;
-		m_tauler.eliminaFigura(m_figura);
 		m_figura.moure(direccio);
-		m_tauler.colocarFigura(m_figura);
 	}
+
+	m_tauler.colocarFigura(m_figura);
 
 	return valid;
 }
 
 int Joc::baixaFigura()
-{ 
-	int matriuIndex[N_FILES], files = 0;
+{
+	int matriuIndex[N_FILES], files = 0, filesTot = 0;
 	m_tauler.eliminaFigura(m_figura);
 	if (m_tauler.potCaure(m_figura))
 	{
@@ -56,10 +54,20 @@ int Joc::baixaFigura()
 		if (files != 0)
 		{
 			m_tauler.eliminarFiles(matriuIndex, files);
+			filesTot += files;
+			while (files != 0)
+			{
+				m_tauler.comprovarFiles(matriuIndex, files);
+				if (files != 0)
+				{
+					m_tauler.eliminarFiles(matriuIndex, files);
+					filesTot += files;
+				}
+			}
 		}
 	}
 
-	return files;
+	return filesTot;
 }
 
 void Joc::escriuTauler(const string& nomFitxer)
@@ -89,7 +97,7 @@ void Joc::escriuTauler(const string& nomFitxer)
 			fitxer << endl;
 		}
 		fitxer.close();
-	}	
+	}
 }
 
 void Joc::inicialitza(const string& nomFitxer)
@@ -108,7 +116,7 @@ void Joc::inicialitza(const string& nomFitxer)
 		while (!fitxer.eof() && i < N_FILES)
 		{
 			matriu[i][j] = codiColor;
-			if (j < N_COLUMNES-1)
+			if (j < N_COLUMNES - 1)
 			{
 				j++;
 			}
@@ -127,7 +135,7 @@ void Joc::inicialitza(const string& nomFitxer)
 		{
 			m_figura.gir(GIR_ANTI_HORARI);
 		}
-		else 
+		else
 		{
 			for (int i = 0; i < codiGir; i++)
 			{

@@ -23,12 +23,12 @@ bool comprovarTauler(const ColorFigura tauler[N_FILES][N_COLUMNES], const Figura
 	{
 		int x = figura.getPosicioX() + j - 1;
 		int y = figura.getPosicioY() + i - 1;
-		if (matriu[i][j] != NO_COLOR && y > N_FILES || matriu[i][j] != NO_COLOR && x < 0 || matriu[i][j] != NO_COLOR && x > N_COLUMNES)
+		if (matriu[i][j] != NO_COLOR && y > N_FILES-1 || matriu[i][j] != NO_COLOR && x < 0 || matriu[i][j] != NO_COLOR && x > N_COLUMNES-1)
 		{
 			trobat = true;
 			bucle = false;
 		}
-		if (y < 0 || y > N_FILES || x < 0 || x > N_COLUMNES)
+		if (y < 0 || y > N_FILES-1 || x < 0 || x > N_COLUMNES-1)
 		{
 
 		}
@@ -130,6 +130,18 @@ void Tauler::eliminarFiles(int matriuIndex[], int mida)
 		{
 			m_tauler[matriuIndex[i]][j] = NO_COLOR;
 		}
+		for (int k = 0; k < matriuIndex[i]; k++)
+		{
+			for (int x = 0; x < N_COLUMNES; x++)
+			{
+				m_tauler[matriuIndex[i] - k][x] = m_tauler[matriuIndex[i] - k - 1][x];
+			}
+		}
+		for (int columna = 0; columna < N_COLUMNES; columna++)
+		{
+			m_tauler[0][columna] = NO_COLOR;
+		}
+
 	}
 }
 
@@ -153,7 +165,7 @@ void Tauler::eliminaFigura(const Figura& figura)
 	}
 }
 
-void Tauler::colocarFigura(const Figura& figura && matriu[i][j] != NO_COLOR)
+void Tauler::colocarFigura(const Figura& figura)
 {
 	ColorFigura matriu[4][4];
 	figura.getMatriu(matriu);
@@ -165,7 +177,7 @@ void Tauler::colocarFigura(const Figura& figura && matriu[i][j] != NO_COLOR)
 			int x = figura.getPosicioX() + j - 1;
 			int y = figura.getPosicioY() + i - 1;
 
-			if (m_tauler[y][x] == NO_COLOR)
+			if (m_tauler[y][x] == NO_COLOR && matriu[i][j] != NO_COLOR)
 			{
 				m_tauler[y][x] = matriu[i][j];
 			}

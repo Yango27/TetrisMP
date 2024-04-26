@@ -3,7 +3,6 @@
 Figura::Figura()
 {
 	m_tipusFigura = NO_FIGURA;
-	m_colorFigura = NO_COLOR;
 	m_posicioX = 0;
 	m_posicioY = 0;
 	for (int i = 0; i < 4; i++)
@@ -39,16 +38,16 @@ void Figura::gir(DireccioGir dirGir)
 	{
 		if (dirGir == GIR_HORARI)
 		{
-			for (int i = 0; i < 3; i++) //transposa la matriu
+			for (int i = 0; i < 4; i++) //transposa la matriu
 			{
-				for (int j = 0; j < 3; j++)
+				for (int j = 0; j < 4; j++)
 				{
 					matriu[i][j] = m_matriu[j][i];
 				}
 			}
-			for (int i = 0; i < 3; i++)
+			for (int i = 0; i < 4; i++)
 			{
-				for (int j = 0; j < 3; j++)
+				for (int j = 0; j < 4; j++)
 				{
 					m_matriu[i][j] = matriu[i][j];
 				}
@@ -61,20 +60,37 @@ void Figura::gir(DireccioGir dirGir)
 					m_matriu[i][2] = matriu[i][0];
 				}
 			}
+			else
+			{
+				for (int i = 0; i < 4; i++)
+				{
+					for (int j = 0; j < 4; j++)
+					{
+						matriu[i][j] = m_matriu[i][3-j];
+					}
+				}
+				for (int i = 0; i < 4; i++)
+				{
+					for (int j = 0; j < 4; j++)
+					{
+						m_matriu[i][j] = matriu[i][j];
+					}
+				}
+			}
 
 		}
 		else
 		{
-			for (int i = 0; i < 3; i++) //transposa la matriu
+			for (int i = 0; i < 4; i++) //transposa la matriu
 			{
-				for (int j = 0; j < 3; j++)
+				for (int j = 0; j < 4; j++)
 				{
 					matriu[i][j] = m_matriu[j][i];
 				}
 			}
-			for (int i = 0; i < 3; i++)
+			for (int i = 0; i < 4; i++)
 			{
-				for (int j = 0; j < 3; j++)
+				for (int j = 0; j < 4; j++)
 				{
 					m_matriu[i][j] = matriu[i][j];
 				}
@@ -85,6 +101,23 @@ void Figura::gir(DireccioGir dirGir)
 				{
 					m_matriu[0][i] = m_matriu[2][i];
 					m_matriu[2][i] = matriu[0][i];
+				}
+			}
+			else
+			{
+				for (int i = 0; i < 4; i++)
+				{
+					for (int j = 0; j < 4; j++)
+					{
+						matriu[i][j] = m_matriu[3-i][j];
+					}
+				}
+				for (int i = 0; i < 4; i++)
+				{
+					for (int j = 0; j < 4; j++)
+					{
+						m_matriu[i][j] = matriu[i][j];
+					}
 				}
 			}
 		}
@@ -105,12 +138,19 @@ void Figura::moure(Moviment moviment)
 
 void Figura::inicialitza(int tipus, int x, int y)
 {
-	TipusFigura tipusFigura;
+	TipusFigura tipusFigura = NO_FIGURA;
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			m_matriu[i][j] = NO_COLOR;
+		}
+	}
 
 	switch (tipus)
 	{
 	case 1:
-
 		tipusFigura = FIGURA_O;
 		break;
 	case 2:
