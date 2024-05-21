@@ -6,7 +6,8 @@
 class Joc
 {
 public:
-
+	Figura getFigura() const { return m_figura; }
+	Tauler getTauler() const { return m_tauler; }
 	void inicialitza(const string& nomFitxer);
 	bool giraFigura(DireccioGir direccio);
 	bool mouFigura(int dirX);

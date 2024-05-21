@@ -94,6 +94,27 @@ string GraphicManager::getImagePath(IMAGE_NAME name){
     case GRAFIC_QUADRAT_VERD:
         path = "data/Graphics/quadrat_verd.png";
         break;
+    case GRAFIC_QUADRAT_GROC_TRANSPARENT:
+        path = "data/Graphics/quadrat_groc_transparent.png";
+        break;
+    case GRAFIC_QUADRAT_BLAUCEL_TRANSPARENT:
+        path = "data/Graphics/quadrat_blaucel_transparent.png";
+        break;
+    case GRAFIC_QUADRAT_MAGENTA_TRANSPARENT:
+        path = "data/Graphics/quadrat_magenta_transparent.png";
+        break;
+    case GRAFIC_QUADRAT_TARONJA_TRANSPARENT:
+        path = "data/Graphics/quadrat_taronja_transparent.png";
+        break;
+    case GRAFIC_QUADRAT_BLAUFOSC_TRANSPARENT:
+        path = "data/Graphics/quadrat_blaufosc_transparent.png";
+        break;
+    case GRAFIC_QUADRAT_VERMELL_TRANSPARENT:
+        path = "data/Graphics/quadrat_vermell_transparent.png";
+        break;
+    case GRAFIC_QUADRAT_VERD_TRANSPARENT:
+        path = "data/Graphics/quadrat_verd_transparent.png";
+        break;
     default:
         path = "";
         break;

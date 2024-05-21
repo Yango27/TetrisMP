@@ -285,11 +285,12 @@ void Figura::inicialitza(int tipus, int x, int y, int codiGir)
 
 void Figura::dibuixaFigura() const
 {
+	
 	IMAGE_NAME imatge;
 	switch (m_color)
 	{
 	case COLOR_GROC:
-		imatge = GRAFIC_QUADRAT_GROC;
+		imatge = GRAFIC_QUADRAT_GROC;	
 		break;
 	case COLOR_BLAUCEL:
 		imatge = GRAFIC_QUADRAT_BLAUCEL;
@@ -309,6 +310,9 @@ void Figura::dibuixaFigura() const
 	case COLOR_VERMELL:
 		imatge = GRAFIC_QUADRAT_VERMELL;
 		break;
+	default:
+		imatge = GRAFIC_NUM_MAX;
+		break;
 	}
 	for (int i = 0; i < 4; i++)
 	{
@@ -317,6 +321,20 @@ void Figura::dibuixaFigura() const
 			if (m_matriu[i][j] != NO_COLOR)
 			{
 				GraphicManager::getInstance()->drawSprite(imatge, POS_X_TAULER + ((m_posicioX+ j)* MIDA_QUADRAT), POS_Y_TAULER + ((m_posicioY - 1 + i) * MIDA_QUADRAT), false);
+			}
+		}
+	}
+}
+
+void Figura::dibuixaFiguraTransparent(IMAGE_NAME imatge) const
+{
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			if (m_matriu[i][j] != NO_COLOR)
+			{
+				GraphicManager::getInstance()->drawSprite(imatge, POS_X_TAULER + ((m_posicioX+ j) * MIDA_QUADRAT), POS_Y_TAULER + ((m_posicioY - 1 + i) * MIDA_QUADRAT), false);
 			}
 		}
 	}

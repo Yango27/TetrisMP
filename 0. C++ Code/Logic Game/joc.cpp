@@ -1,5 +1,4 @@
 #include "joc.h"
-
 bool Joc::giraFigura(DireccioGir direccio)
 {
 	bool valid = false;

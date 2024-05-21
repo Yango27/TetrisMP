@@ -47,6 +47,7 @@ int main(int argc, const char* argv[])
     Uint64 LAST = 0;
     double deltaTime = 0;
     Tetris tetris;
+    int i = 0;
     tetris.inicialitzaJoc(0, "asdasd", "asdasda", "asdasda");
     do
     {
@@ -57,8 +58,17 @@ int main(int argc, const char* argv[])
         // Captura tots els events de ratolí i teclat de l'ultim cicle
         pantalla.processEvents();
         // Actualitza la pantalla
-        tetris.juga(0, deltaTime);
+        bool acabat = tetris.juga(0, deltaTime);
         pantalla.update();
+        if (acabat)
+        {
+            if (i != 0)
+            {
+                tetris.mostraMenu();
+                i = 0;
+            }
+            i++;
+        }
         
     } while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE));
     // Sortim del bucle si pressionem ESC

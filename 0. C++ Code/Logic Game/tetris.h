@@ -7,10 +7,11 @@ class Tetris
 {
 public:
 
-	void juga(int mode, double deltaTime);
+	bool juga(int mode, double deltaTime);
 	void inicialitzaJoc(int mode, const string& fitxerInicial, const string& fitxerFigures, const string& fitxerMoviments);
 	void mostraPuntuacions() const;
 	Partida getPartida() const { return m_partida; }
+	int mostraMenu();
 
 private:
 	Partida m_partida;

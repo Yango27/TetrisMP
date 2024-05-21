@@ -17,7 +17,6 @@ public:
     void inicialitzarNodeFigura(const string& fitxerFigures);
     void inicialitzarNodeTipusMoviments(const string& fitxerMoviments);
     void actualitzaPuntsNivell(int filesTot);
-    bool partidaAcabada();
     int getPunts() const{ return m_punts; }
     int getNivell() const{ return m_nivell; }
     bool getPartidaAcabada() const { return m_partidaAcabada; }

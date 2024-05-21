@@ -9,7 +9,7 @@ Partida::Partida()
     m_nivell = 0;
     m_figures = nullptr;
     m_moviments = nullptr;
-    m_velocitat = 2 ;
+    m_velocitat = 1.5 ;
     m_nodeActualFigures = m_figures;
     m_nodeActualMoviment = m_moviments;
     m_partidaAcabada = false;
@@ -183,6 +183,7 @@ void Partida::actualitza(int mode ,double deltaTime)
     {
         bool colocat = false;
         int filesTot = 0;
+      
         if (Keyboard_GetKeyTrg(KEYBOARD_RIGHT))
         {
             m_joc.mouFigura(1);
@@ -200,16 +201,16 @@ void Partida::actualitza(int mode ,double deltaTime)
             m_joc.giraFigura(GIR_HORARI);
         }
         else if (Keyboard_GetKeyTrg(KEYBOARD_SPACE))
-        {
+        {  
             while (!colocat)
             {
                 filesTot = m_joc.baixaFigura(colocat);
             }
         }
-
+        
         if (m_temps > m_velocitat)
         {
-            m_joc.baixaFigura(colocat);
+            filesTot = m_joc.baixaFigura(colocat);
             m_temps = 0;
         }
         if (colocat)
@@ -225,7 +226,7 @@ void Partida::actualitza(int mode ,double deltaTime)
             }
 
         }
-        m_joc.dibuixarJoc();
+        m_joc.dibuixarJoc();    
     }
     else
     {
@@ -249,9 +250,4 @@ void Partida::actualitza(int mode ,double deltaTime)
             }
         }
     }
-}
-
-bool Partida::partidaAcabada()
-{
-    return m_joc.jocAcabat();
 }

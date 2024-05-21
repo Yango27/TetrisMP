@@ -264,6 +264,9 @@ void Tauler::dibuixarTauler() const
 			case COLOR_VERMELL:
 				imatge = GRAFIC_QUADRAT_VERMELL;
 				break;
+			default:
+				imatge = GRAFIC_NUM_MAX;
+				break;
 			}
 			if (color != NO_COLOR)
 			{
