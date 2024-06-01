@@ -1,79 +1,78 @@
-
-//  main.cpp
-//
-//  Copyright � 2018 Compiled Creations Limited. All rights reserved.
-//
-
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__) || defined  (_WIN64)
-
 #include <iostream>
-//Definicio necesaria per poder incloure la llibreria i que trobi el main
 #define SDL_MAIN_HANDLED
 #include <windows.h>
-//Llibreria grafica
 #include "../Graphic Lib/libreria.h"
 #include "../Graphic Lib/NFont/NFont.h"
-#include <conio.h>      /* getch */ 
-
+#include <conio.h> 
 #elif __APPLE__
-//Llibreria grafica
 #include "../Graphic Lib/libreria.h"
 #include "../Graphic Lib/NFont/NFont.h"
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdocumentation"
 #include <SDL2/SDL.h>
 #pragma clang diagnostic pop
-
 #endif
-
 #include "Tetris.h"
 #include "InfoJoc.h"
 #include "GraphicManager.h"
 
-
 int main(int argc, const char* argv[])
 {
-    //Instruccions necesaries per poder incloure la llibreria i que trobi el main
     SDL_SetMainReady();
     SDL_Init(SDL_INIT_VIDEO);
-
-    //Inicialitza un objecte de la classe Screen que s'utilitza per gestionar la finestra grafica
     Screen pantalla(SCREEN_SIZE_X, SCREEN_SIZE_Y);
-    //Mostrem la finestra grafica
     pantalla.show();
 
-    
     Uint64 NOW = SDL_GetPerformanceCounter();
     Uint64 LAST = 0;
+
     double deltaTime = 0;
     Tetris tetris;
     int i = 0;
-    tetris.inicialitzaJoc(0, "asdasd", "asdasda", "asdasda");
+    int opcio, mode;
+    string fitxerInicial = "", fitxerFigures = "", fitxerMoviments = "", fitxerPuntuacions = "./data/Games/Scores/puntuacions.txt";
+    opcio = tetris.mostraMenu(fitxerInicial, fitxerFigures, fitxerMoviments, mode);
+    if (opcio == 1 || opcio == 2)
+    {
+        tetris.inicialitzaJoc(mode, fitxerInicial, fitxerFigures, fitxerMoviments);
+    }
     do
     {
+        if (opcio == 1)
+        {
+            mode = 0;
+        }
+        else if (opcio == 2)
+        {
+            mode = 1;
+        }
         LAST = NOW;
         NOW = SDL_GetPerformanceCounter();
-        deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
-
-        // Captura tots els events de ratolí i teclat de l'ultim cicle
+        deltaTime = (double)((NOW - LAST) / (double) SDL_GetPerformanceFrequency());
         pantalla.processEvents();
-        // Actualitza la pantalla
-        bool acabat = tetris.juga(0, deltaTime);
+        bool acabat = tetris.juga(mode, deltaTime);
         pantalla.update();
         if (acabat)
         {
-            if (i != 0)
+            if (i > 10)
             {
-                tetris.mostraMenu();
+                if (mode == 0)
+                {
+                    tetris.escriuPuntuacions(fitxerPuntuacions);
+                }
+                opcio = tetris.mostraMenu(fitxerInicial, fitxerFigures, fitxerMoviments, mode);
                 i = 0;
+                acabat = false;
+                if (opcio == 1 || opcio == 2)
+                {
+                    tetris.inicialitzaJoc(mode, fitxerInicial, fitxerFigures, fitxerMoviments);
+                }
             }
             i++;
         }
         
-    } while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE));
-    // Sortim del bucle si pressionem ESC
-
-    //Instruccio necesaria per alliberar els recursos de la llibreria 
+    } while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE) && opcio != 4);
     SDL_Quit();
     return 0;
 }

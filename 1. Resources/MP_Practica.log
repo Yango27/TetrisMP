@@ -1,16 +1,8 @@
 ﻿  main.cpp
-C:\Users\yango\Downloads\intro_llibreria_grafica\intro_llibreria_grafica_estudiants\0. C++ Code\Logic Game\InfoJoc.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\yango\Desktop\intro_llibreria_grafica\intro_llibreria_grafica_estudiants\0. C++ Code\Logic Game\InfoJoc.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   (compiling source file '../../0.%20C++%20Code/Logic%20Game/main.cpp')
   
-C:\Users\yango\Downloads\intro_llibreria_grafica\intro_llibreria_grafica_estudiants\0. C++ Code\Logic Game\InfoJoc.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\yango\Desktop\intro_llibreria_grafica\intro_llibreria_grafica_estudiants\0. C++ Code\Logic Game\InfoJoc.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   (compiling source file '../../0.%20C++%20Code/Logic%20Game/main.cpp')
   
-  tetris.cpp
-C:\Users\yango\Downloads\intro_llibreria_grafica\intro_llibreria_grafica_estudiants\0. C++ Code\Logic Game\InfoJoc.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  (compiling source file '../../0.%20C++%20Code/Logic%20Game/tetris.cpp')
-  
-C:\Users\yango\Downloads\intro_llibreria_grafica\intro_llibreria_grafica_estudiants\0. C++ Code\Logic Game\InfoJoc.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  (compiling source file '../../0.%20C++%20Code/Logic%20Game/tetris.cpp')
-  
-  Generating Code...
-  MP_Practica.vcxproj -> C:\Users\yango\Downloads\intro_llibreria_grafica\intro_llibreria_grafica_estudiants\2. Platforms\0. Windows Desktop\Program\MP_Practica.exe
+  MP_Practica.vcxproj -> C:\Users\yango\Desktop\intro_llibreria_grafica\intro_llibreria_grafica_estudiants\2. Platforms\0. Windows Desktop\Program\MP_Practica.exe

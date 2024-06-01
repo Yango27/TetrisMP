@@ -276,3 +276,14 @@ void Tauler::dibuixarTauler() const
 		}
 	}
 }
+
+void Tauler::resetTauler()
+{
+	for (int i = 0; i < N_FILES; i++)
+	{
+		for (int j = 0; j < N_COLUMNES; j++)
+		{
+			m_tauler[i][j] = NO_COLOR;
+		}
+	}
+}

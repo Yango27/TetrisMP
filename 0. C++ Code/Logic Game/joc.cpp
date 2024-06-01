@@ -1,12 +1,15 @@
 #include "joc.h"
 bool Joc::giraFigura(DireccioGir direccio)
 {
-	bool valid = false;
 	m_tauler.eliminaFigura(m_figura);
-	if (m_tauler.girValid(m_figura, direccio))
+	bool valid = false;
+	if (m_tauler.potCaure(m_figura))
 	{
-		valid = true;
-		m_figura.gir(direccio);
+		if (m_tauler.girValid(m_figura, direccio))
+		{
+			valid = true;
+			m_figura.gir(direccio);
+		}
 	}
 	m_tauler.colocarFigura(m_figura);
 	return valid;
@@ -15,24 +18,25 @@ bool Joc::giraFigura(DireccioGir direccio)
 bool Joc::mouFigura(int dirX)
 {
 	bool valid = false;
-	Moviment direccio;
-	if (dirX == 1)
-	{
-		direccio = MOURE_DRETA;
-	}
-	else
-	{
-		direccio = MOURE_ESQUERRA;
-	}
 	m_tauler.eliminaFigura(m_figura);
-	if (m_tauler.movimentValid(m_figura, direccio))
+	if (m_tauler.potCaure(m_figura))
 	{
-		valid = true;
-		m_figura.moure(direccio);
+		Moviment direccio;
+		if (dirX == 1)
+		{
+			direccio = MOURE_DRETA;
+		}
+		else
+		{
+			direccio = MOURE_ESQUERRA;
+		}
+		if (m_tauler.movimentValid(m_figura, direccio))
+		{
+			valid = true;
+			m_figura.moure(direccio);
+		}
 	}
-
 	m_tauler.colocarFigura(m_figura);
-
 	return valid;
 }
 
@@ -130,9 +134,7 @@ void Joc::inicialitza(const string& nomFitxer)
 		fitxer.close();
 		m_tauler.inicialitzar(matriu);
 		m_figura.inicialitza(tipus, fila, columna, codiGir);
-
 		m_tauler.colocarFigura(m_figura);
-
 	}
 
 }
@@ -197,3 +199,8 @@ void Joc::dibuixarJoc() const
 	m_tauler.dibuixarTauler();
 }
 
+void Joc::resetJoc()
+{
+	m_tauler.resetTauler();
+	m_figura.resetFigura();
+}

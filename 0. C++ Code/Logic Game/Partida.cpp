@@ -13,6 +13,7 @@ Partida::Partida()
     m_nodeActualFigures = m_figures;
     m_nodeActualMoviment = m_moviments;
     m_partidaAcabada = false;
+    m_fitxerFinalitzat = false;
 }
 
 void Partida::inicialitzarNodeFigura(const string& fitxerFigures)
@@ -56,9 +57,12 @@ void Partida::inicialitzarNodeFigura(const string& fitxerFigures)
 
             fitxer >> tipus;
         }
-        
+        fitxer.close();
     }
-    fitxer.close();
+    else
+    {
+        cout << "No s'ha pogut obrir el fitxer. " << endl;
+    }
 }
 
 void Partida::inicialitzarNodeTipusMoviments(const string& fitxerMoviments)
@@ -121,6 +125,11 @@ void Partida::inicialitzarNodeTipusMoviments(const string& fitxerMoviments)
             }
             fitxer >> moviment;
         }
+        fitxer.close();
+    }
+    else
+    {
+        cout << "No s'ha pogut obrir el fitxer. " << endl;
     }
 }
 
@@ -132,19 +141,27 @@ void Partida::inicialitza(int mode, const string& fitxerInicial, const string& f
         m_punts = 0;
         m_nivell = 0;
         m_velocitat = 2;
+        m_partidaAcabada = false;
+        m_fitxerFinalitzat = false;
+        m_joc.resetJoc();
         m_joc.generarFigura();
         m_joc.dibuixarJoc();
     }
     else
     {
-        m_temps = 0;
-        m_punts = 0;
-        m_nivell = 0;
         m_velocitat = 0.5;
+        m_figures = nullptr;
+        m_moviments = nullptr;
+        m_nodeActualFigures = m_figures;
+        m_nodeActualMoviment = m_moviments;
+        m_partidaAcabada = false;
+        m_fitxerFinalitzat = false;
         m_joc.inicialitza(fitxerInicial);
         inicialitzarNodeFigura(fitxerFigures);
         inicialitzarNodeTipusMoviments(fitxerMoviments);
         m_joc.dibuixarJoc();
+        m_nodeActualFigures = m_figures;
+        m_nodeActualMoviment = m_moviments;
     }
 }
 
@@ -207,6 +224,10 @@ void Partida::actualitza(int mode ,double deltaTime)
                 filesTot = m_joc.baixaFigura(colocat);
             }
         }
+        else if (Keyboard_GetKeyTrg(KEYBOARD_A))
+        {
+           filesTot = m_joc.baixaFigura(colocat);
+        }
         
         if (m_temps > m_velocitat)
         {
@@ -223,31 +244,48 @@ void Partida::actualitza(int mode ,double deltaTime)
             {
                 actualitzaPuntsNivell(filesTot);
                 m_joc.generarFigura();
+                colocat = false;
             }
 
-        }
-        m_joc.dibuixarJoc();    
+        }  
     }
-    else
+    else if (mode == 1)
     {
         if (m_temps > m_velocitat)
         {
             int filesTot = 0;
             m_temps = 0;
             bool acabat = false; //per saber si la figura  ha estat colocada ja
-            if (m_nodeActualMoviment != nullptr)
+            TipusMoviment moviment = m_nodeActualMoviment->getValor();
+            if (!m_fitxerFinalitzat)
             {
-                TipusMoviment moviment = m_nodeActualMoviment->getValor();
-                m_nodeActualMoviment->setNext(m_nodeActualMoviment->getNext());
                 acabat = m_joc.moviment(moviment, filesTot);
                 if (acabat)
                 {
+                    if (m_joc.jocAcabat())
+                    {
+                        m_partidaAcabada = true;
+                    }
                     m_joc.setFigura(m_nodeActualFigures->getValor());
-                    m_nodeActualFigures->setNext(m_nodeActualFigures->getNext());
+                    if (m_nodeActualFigures->getNext() != nullptr)
+                    {
+                        m_nodeActualFigures = m_nodeActualFigures->getNext();
+                    }
+                    else
+                    {
+                        m_fitxerFinalitzat = true;
+                    }
                 }
-                actualitzaPuntsNivell(filesTot);
-                m_joc.dibuixarJoc();
+                if (m_nodeActualMoviment->getNext() != nullptr)
+                {
+                    m_nodeActualMoviment = m_nodeActualMoviment->getNext();
+                }
+                else
+                {
+                    m_fitxerFinalitzat = true;
+                }
             }
         }
     }
+    m_joc.dibuixarJoc();
 }

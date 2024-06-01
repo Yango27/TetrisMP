@@ -18,7 +18,7 @@ public:
 	void getTauler(ColorFigura matriu[N_FILES][N_COLUMNES]) const;
 	bool comprovarTauler(const Figura& figura) const;
 	void dibuixarTauler() const;
-
+	void resetTauler();
 private:
 	ColorFigura m_tauler[N_FILES][N_COLUMNES];
 };

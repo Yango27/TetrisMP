@@ -21,6 +21,7 @@ public:
 	void moure(Moviment moviment); //metode per desplacar la figura
 	void dibuixaFigura() const;
 	void dibuixaFiguraTransparent(IMAGE_NAME imatge) const;
+	void resetFigura();
 
 private:
 

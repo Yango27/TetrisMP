@@ -339,3 +339,18 @@ void Figura::dibuixaFiguraTransparent(IMAGE_NAME imatge) const
 		}
 	}
 }
+
+void Figura::resetFigura()
+{
+	m_tipusFigura = NO_FIGURA;
+	m_posicioX = 0;
+	m_posicioY = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			m_matriu[i][j] = NO_COLOR;
+		}
+	}
+	m_color = NO_COLOR;
+}

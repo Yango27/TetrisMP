@@ -20,6 +20,7 @@ public:
     int getPunts() const{ return m_punts; }
     int getNivell() const{ return m_nivell; }
     bool getPartidaAcabada() const { return m_partidaAcabada; }
+    bool getFitxerFinalitzat() const { return m_fitxerFinalitzat; }
 
 private:
     double m_temps;
@@ -32,6 +33,7 @@ private:
     NodeFigura* m_nodeActualFigures;
     NodeTipusMoviment* m_nodeActualMoviment;
     bool m_partidaAcabada;
+    bool m_fitxerFinalitzat;
 };
 
 #endif 

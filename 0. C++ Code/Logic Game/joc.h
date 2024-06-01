@@ -19,7 +19,7 @@ public:
 	void setTauler(Tauler tauler) { m_tauler = tauler; }
 	bool moviment(TipusMoviment moviment, int& filesTot);
 	void dibuixarJoc() const;
-
+	void resetJoc();
 
 private:
 	Tauler m_tauler;
