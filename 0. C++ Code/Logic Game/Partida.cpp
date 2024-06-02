@@ -144,7 +144,7 @@ void Partida::inicialitza(int mode, const string& fitxerInicial, const string& f
         m_partidaAcabada = false;
         m_fitxerFinalitzat = false;
         m_joc.resetJoc();
-        m_joc.generarFigura();
+        m_joc.generarFiguraInici();
         m_joc.dibuixarJoc();
     }
     else
@@ -218,7 +218,7 @@ void Partida::actualitza(int mode ,double deltaTime)
             m_joc.giraFigura(GIR_HORARI);
         }
         else if (Keyboard_GetKeyTrg(KEYBOARD_SPACE))
-        {  
+        {   
             while (!colocat)
             {
                 filesTot = m_joc.baixaFigura(colocat);
@@ -229,10 +229,10 @@ void Partida::actualitza(int mode ,double deltaTime)
            filesTot = m_joc.baixaFigura(colocat);
         }
         
-        if (m_temps > m_velocitat)
+        if (m_temps > m_velocitat && !colocat)
         {
-            filesTot = m_joc.baixaFigura(colocat);
             m_temps = 0;
+            filesTot = m_joc.baixaFigura(colocat);
         }
         if (colocat)
         {
@@ -244,9 +244,7 @@ void Partida::actualitza(int mode ,double deltaTime)
             {
                 actualitzaPuntsNivell(filesTot);
                 m_joc.generarFigura();
-                colocat = false;
             }
-
         }  
     }
     else if (mode == 1)

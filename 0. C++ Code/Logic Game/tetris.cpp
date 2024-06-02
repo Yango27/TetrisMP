@@ -83,7 +83,7 @@ void Tetris::mostraPuntuacions()
 		actual++;
 	}
 }
-int Tetris::mostraMenu(string& fitxerInicial, string& fitxerFigures, string& fitxerMoviments, int &mode)
+int Tetris::mostraMenu(string& fitxerInicial, string& fitxerFigures, string& fitxerMoviments, int& mode)
 {	
 	int opcio = 0;
 	mode = 0;
@@ -133,13 +133,16 @@ bool Tetris::juga(int mode, double deltaTime)
 		m_partida.actualitza(mode, deltaTime);
 		if (mode == 0)
 		{
+			string nextFigura = "Seguent Figura: ";
 			string msg = "Punts: " + to_string(m_partida.getPunts()) + ", Nivell: " + to_string(m_partida.getNivell());
 			GraphicManager::getInstance()->drawFont(FONT_WHITE_30, POS_X_TAULER, POS_Y_TAULER - 50, 1.0, msg);
+			GraphicManager::getInstance()->drawFont(FONT_WHITE_30, 525 , POS_Y_TAULER, 1.0, nextFigura);
 		}
 	}
 	else
 	{
 		GraphicManager::getInstance()->drawSprite(GRAFIC_FONS, 0, 0, false);
+		GraphicManager::getInstance()->drawSprite(GRAFIC_FONS, 500, 0, false);
 		string gameOver = "GAME OVER";
 		GraphicManager::getInstance()->drawFont(FONT_WHITE_30, SCREEN_SIZE_X/2-180, SCREEN_SIZE_Y/2-50, 2.0, gameOver);
 	}

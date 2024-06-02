@@ -326,20 +326,6 @@ void Figura::dibuixaFigura() const
 	}
 }
 
-void Figura::dibuixaFiguraTransparent(IMAGE_NAME imatge) const
-{
-	for (int i = 0; i < 4; i++)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			if (m_matriu[i][j] != NO_COLOR)
-			{
-				GraphicManager::getInstance()->drawSprite(imatge, POS_X_TAULER + ((m_posicioX+ j) * MIDA_QUADRAT), POS_Y_TAULER + ((m_posicioY - 1 + i) * MIDA_QUADRAT), false);
-			}
-		}
-	}
-}
-
 void Figura::resetFigura()
 {
 	m_tipusFigura = NO_FIGURA;

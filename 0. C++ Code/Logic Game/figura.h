@@ -20,7 +20,6 @@ public:
 	void gir(DireccioGir dirGir); //metode per girar la figura
 	void moure(Moviment moviment); //metode per desplacar la figura
 	void dibuixaFigura() const;
-	void dibuixaFiguraTransparent(IMAGE_NAME imatge) const;
 	void resetFigura();
 
 private:

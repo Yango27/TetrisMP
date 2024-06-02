@@ -43,6 +43,7 @@ bool Joc::mouFigura(int dirX)
 int Joc::baixaFigura(bool& acabat)
 {
 	int matriuIndex[N_FILES], files = 0, filesTot = 0;
+	acabat = false;
 	m_tauler.eliminaFigura(m_figura);
 	if (m_tauler.potCaure(m_figura))
 	{
@@ -69,8 +70,6 @@ int Joc::baixaFigura(bool& acabat)
 			}
 		}
 	}
-	
-
 	return filesTot;
 }
 
@@ -147,7 +146,24 @@ void Joc::generarFigura()
 	uniform_int_distribution<> distrib2(0, 3);
 	int numAleatori = distrib(gen);
 	int girAleatori = distrib2(gen);
+	m_figura = m_figuraNext;
+	m_figuraNext.inicialitza(numAleatori, 0, 5, girAleatori);
+	m_tauler.colocarFigura(m_figura);
+}
+
+void Joc::generarFiguraInici()
+{
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> distrib(1, 7);
+	uniform_int_distribution<> distrib2(0, 3);
+	int numAleatori = distrib(gen);
+	int girAleatori = distrib2(gen);
+	int numAleatori2 = distrib(gen);
+	int girAleatori2 = distrib2(gen);
 	m_figura.inicialitza(numAleatori, 0, 5, girAleatori);
+	m_figuraNext.inicialitza(numAleatori2, 0, 5, girAleatori2);
+	m_tauler.colocarFigura(m_figura);
 }
 
 bool Joc::jocAcabat()
@@ -194,13 +210,55 @@ bool Joc::moviment(TipusMoviment moviment, int& filesTot)
 void Joc::dibuixarJoc() const
 {
 	GraphicManager::getInstance()->drawSprite(GRAFIC_FONS, 0, 0, false);
+	GraphicManager::getInstance()->drawSprite(GRAFIC_FONS, 500, 0, false);
 	GraphicManager::getInstance()->drawSprite(GRAFIC_TAULER, POS_X_TAULER, POS_Y_TAULER, false);
 	m_figura.dibuixaFigura();
 	m_tauler.dibuixarTauler();
+	IMAGE_NAME imatge;
+	ColorFigura matriu[4][4];
+	m_figuraNext.getMatriu(matriu);
+	switch (m_figuraNext.getColor())
+	{
+	case COLOR_GROC:
+		imatge = GRAFIC_QUADRAT_GROC;
+		break;
+	case COLOR_BLAUCEL:
+		imatge = GRAFIC_QUADRAT_BLAUCEL;
+		break;
+	case COLOR_BLAUFOSC:
+		imatge = GRAFIC_QUADRAT_BLAUFOSC;
+		break;
+	case COLOR_MAGENTA:
+		imatge = GRAFIC_QUADRAT_MAGENTA;
+		break;
+	case COLOR_TARONJA:
+		imatge = GRAFIC_QUADRAT_TARONJA;
+		break;
+	case COLOR_VERD:
+		imatge = GRAFIC_QUADRAT_VERD;
+		break;
+	case COLOR_VERMELL:
+		imatge = GRAFIC_QUADRAT_VERMELL;
+		break;
+	default:
+		imatge = GRAFIC_NUM_MAX;
+		break;
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			if (matriu[i][j] != NO_COLOR)
+			{
+				GraphicManager::getInstance()->drawSprite(imatge, 600 + (j * MIDA_QUADRAT), POS_Y_TAULER + 100 +  (i* MIDA_QUADRAT), false);
+			}
+		}
+	}
 }
 
 void Joc::resetJoc()
 {
 	m_tauler.resetTauler();
 	m_figura.resetFigura();
+	m_figuraNext.resetFigura();
 }

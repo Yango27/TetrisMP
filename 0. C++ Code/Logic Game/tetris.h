@@ -21,7 +21,7 @@ public:
 	void inicialitzaJoc(int mode, const string& fitxerInicial, const string& fitxerFigures, const string& fitxerMoviments);
 	void mostraPuntuacions();
 	Partida getPartida() const { return m_partida; }
-	int mostraMenu(string& fitxerInicial, string& fitxerFigures, string& fitxerMoviments, int &mode);
+	int mostraMenu(string& fitxerInicial, string& fitxerFigures, string& fitxerMoviments, int& mode);
 	void llegeixPuntuacions(const string& nomFitxer);
 	void escriuPuntuacions(const string& nomFitxer);
 

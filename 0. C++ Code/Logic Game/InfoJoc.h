@@ -66,7 +66,7 @@ typedef enum
 } TipusMoviment;
 
 // Tamany de la pantalla gràfica
-const int SCREEN_SIZE_X = 600;
+const int SCREEN_SIZE_X = 800;
 const int SCREEN_SIZE_Y = 700;
 
 // Mida dels quadrats que formen el tauler
