@@ -28,6 +28,7 @@ public:
 private:
 	Partida m_partida;
 	forward_list <Puntuacio> m_puntuacions;
+	int m_highScore;
 
 };
 #endif 

@@ -181,6 +181,7 @@ void Tauler::colocarFigura(const Figura& figura)
 			{
 				m_tauler[y][x] = matriu[i][j];
 			}
+
 		}
 	}
 }

@@ -120,9 +120,6 @@ string GraphicManager::getImagePath(IMAGE_NAME name){
         break;
 
     }
-    
-    
-    
     return path;
 }
 string GraphicManager::getFontPath(FONT_NAME name){

@@ -5,4 +5,6 @@ C:\Users\yango\Desktop\intro_llibreria_grafica\intro_llibreria_grafica_estudiant
 C:\Users\yango\Desktop\intro_llibreria_grafica\intro_llibreria_grafica_estudiants\0. C++ Code\Logic Game\InfoJoc.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   (compiling source file '../../0.%20C++%20Code/Logic%20Game/Partida.cpp')
   
+C:\Users\yango\Desktop\intro_llibreria_grafica\intro_llibreria_grafica_estudiants\0. C++ Code\Logic Game\Partida.cpp(301,115): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\yango\Desktop\intro_llibreria_grafica\intro_llibreria_grafica_estudiants\0. C++ Code\Logic Game\Partida.cpp(301,97): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   MP_Practica.vcxproj -> C:\Users\yango\Desktop\intro_llibreria_grafica\intro_llibreria_grafica_estudiants\2. Platforms\0. Windows Desktop\Program\MP_Practica.exe

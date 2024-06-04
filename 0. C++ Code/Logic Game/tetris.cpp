@@ -125,18 +125,34 @@ int Tetris::mostraMenu(string& fitxerInicial, string& fitxerFigures, string& fit
 void Tetris::inicialitzaJoc(int mode, const string& fitxerInicial, const string& fitxerFigures, const string& fitxerMoviments)
 {
 	m_partida.inicialitza(mode, fitxerInicial, fitxerFigures, fitxerMoviments);
+	if (mode == 0)
+	{
+		llegeixPuntuacions("./data/Games/Scores/puntuacions.txt");
+		forward_list<Puntuacio>::iterator actual = m_puntuacions.begin();
+		if (m_puntuacions.empty())
+		{
+			m_highScore = 0;
+		}
+		else
+		{
+			m_highScore = actual->getPuntuacio();
+		}
+	}
 }
 bool Tetris::juga(int mode, double deltaTime)
 {
 	if (!m_partida.getPartidaAcabada())
 	{
 		m_partida.actualitza(mode, deltaTime);
+		m_partida.dibuixarFons();
 		if (mode == 0)
 		{
-			string nextFigura = "Seguent Figura: ";
+			string nextFigura = "Next Figura: ";
 			string msg = "Punts: " + to_string(m_partida.getPunts()) + ", Nivell: " + to_string(m_partida.getNivell());
+			string highScore = "High Score: " + to_string(m_highScore);
 			GraphicManager::getInstance()->drawFont(FONT_WHITE_30, POS_X_TAULER, POS_Y_TAULER - 50, 1.0, msg);
-			GraphicManager::getInstance()->drawFont(FONT_WHITE_30, 525 , POS_Y_TAULER, 1.0, nextFigura);
+			GraphicManager::getInstance()->drawFont(FONT_RED_30, 525 , POS_Y_TAULER, 1.0, nextFigura);
+			GraphicManager::getInstance()->drawFont(FONT_GREEN_30, 525, POS_Y_TAULER + 200, 1.0, highScore);
 		}
 	}
 	else

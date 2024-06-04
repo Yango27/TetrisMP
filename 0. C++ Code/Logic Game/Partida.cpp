@@ -227,6 +227,7 @@ void Partida::actualitza(int mode ,double deltaTime)
         else if (Keyboard_GetKeyTrg(KEYBOARD_A))
         {
            filesTot = m_joc.baixaFigura(colocat);
+           m_temps = 0;
         }
         
         if (m_temps > m_velocitat && !colocat)
@@ -286,4 +287,28 @@ void Partida::actualitza(int mode ,double deltaTime)
         }
     }
     m_joc.dibuixarJoc();
+}
+
+void Partida::dibuixarFons() const
+{
+    int k = 0;
+    for (int i = 0; i < SCREEN_SIZE_Y/MIDA_QUADRAT + 1; i++)
+    {
+        for (int j = 0; j < SCREEN_SIZE_X / MIDA_QUADRAT + 1; j++)
+        {
+            if (i == 0 || i == SCREEN_SIZE_Y / MIDA_QUADRAT || j == 0 || j == SCREEN_SIZE_X / MIDA_QUADRAT)
+            {
+                GraphicManager::getInstance()->drawSprite(GRAFIC_QUADRAT_TARONJA_TRANSPARENT, j * MIDA_QUADRAT, i * MIDA_QUADRAT, false);
+
+                if (k < 6)
+                {
+                    k++;
+                }
+                else
+                {
+                    k = 0;
+                }
+            }
+        }
+    }
 }

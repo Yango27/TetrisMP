@@ -147,7 +147,7 @@ void Joc::generarFigura()
 	int numAleatori = distrib(gen);
 	int girAleatori = distrib2(gen);
 	m_figura = m_figuraNext;
-	m_figuraNext.inicialitza(numAleatori, 0, 5, girAleatori);
+	m_figuraNext.inicialitza(numAleatori, 1, 5, girAleatori);
 	m_tauler.colocarFigura(m_figura);
 }
 
@@ -161,8 +161,8 @@ void Joc::generarFiguraInici()
 	int girAleatori = distrib2(gen);
 	int numAleatori2 = distrib(gen);
 	int girAleatori2 = distrib2(gen);
-	m_figura.inicialitza(numAleatori, 0, 5, girAleatori);
-	m_figuraNext.inicialitza(numAleatori2, 0, 5, girAleatori2);
+	m_figura.inicialitza(numAleatori, 1, 5, girAleatori);
+	m_figuraNext.inicialitza(numAleatori2, 1, 5, girAleatori2);
 	m_tauler.colocarFigura(m_figura);
 }
 

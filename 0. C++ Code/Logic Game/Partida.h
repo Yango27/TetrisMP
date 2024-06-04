@@ -21,6 +21,7 @@ public:
     int getNivell() const{ return m_nivell; }
     bool getPartidaAcabada() const { return m_partidaAcabada; }
     bool getFitxerFinalitzat() const { return m_fitxerFinalitzat; }
+    void dibuixarFons() const;
 
 private:
     double m_temps;
